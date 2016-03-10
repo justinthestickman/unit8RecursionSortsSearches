@@ -16,5 +16,11 @@ public class ListMethodsRunner
             System.out.println(i);
          }
       }
+      
+      tempList = ListMethods.reverseList(tempList);
+      for (Integer i : tempList)
+      {
+          System.out.println(i);
+      }
    }
 }
