@@ -8,33 +8,30 @@ public class ListMethods
         ArrayList<Integer> tempList = new ArrayList<Integer>();
         if (n <= 0)
         {
-            //tempList = new ArrayList<Integer>();
-            return tempList;
+            tempList = new ArrayList<Integer>();
         }
         else
         {
-            //tempList = new ArrayList<Integer>();
+            tempList = makeList(n - 1);
             tempList.add(n);
-            tempList.addAll(0, makeList(n-1));
         }
         return tempList;
     }
     
     public static ArrayList<Integer> reverseList(ArrayList<Integer> tList)
     {
-        ArrayList<Integer> list = deepClone(tList);
-        ArrayList<Integer> tempList = new ArrayList<Integer>();
+        ArrayList<Integer> list = ListMethods.deepClone(tList);
         if (list.isEmpty())
         {
-            return tempList;
+            return list;
         }
         else
         {
-            tempList.add(list.get(0));
-            list.remove(0);
-            tempList.addAll(0, reverseList(list));
+            Integer tempInt = list.remove(0);
+            list = ListMethods.reverseList(list);
+            list.add(tempInt);
         }
-        return tempList;
+        return list;
     }
     
     public static ArrayList<Integer> deepClone(ArrayList<Integer> tList)
