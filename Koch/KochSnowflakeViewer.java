@@ -14,7 +14,7 @@ public class KochSnowflakeViewer implements ActionListener
     private final int WIDTH = 400;
     private final int HEIGHT = 500;
 
-    private final int MIN = 1, MAX = 25;
+    private final int MIN = 1, MAX = 9;
 
     private JButton increase, decrease;
     private JLabel titleLabel, orderLabel;
