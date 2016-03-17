@@ -37,7 +37,7 @@ public class TreeViewer implements ActionListener
         tools.setBackground (Color.yellow);
         tools.setOpaque (true);
 
-        titleLabel = new JLabel ("The Koch Snowflake");
+        titleLabel = new JLabel ("Fractal Tree");
         titleLabel.setForeground (Color.black);
 
         increase = new JButton (new ImageIcon ("increase.gif"));
