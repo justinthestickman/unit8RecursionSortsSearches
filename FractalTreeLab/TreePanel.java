@@ -10,11 +10,11 @@ import java.awt.geom.Line2D;
 
 public class TreePanel extends JPanel
 {
-   private final int PANEL_WIDTH = 400;
-   private final int PANEL_HEIGHT = 400;
+   private final int PANEL_WIDTH = 800;
+   private final int PANEL_HEIGHT = 800;
 
-   private final double LSCALE = 0.75;
-   private final double ANGLE = 15;
+   private final double LENGTH_SCALE = 0.8;
+   private final double ANGLE_DIFF = 20;
 
    private int current; //current order
 
@@ -30,8 +30,8 @@ public class TreePanel extends JPanel
 
    //-----------------------------------------------------------------
    //  Draws the fractal recursively. Base case is an order of 1 for
-   //  which a simple straight line is drawn. Otherwise three
-   //  intermediate points are computed, and each line segment is
+   //  which a simple straight line is drawn. Otherwise two
+   //  branching points are computed, and each line segment is
    //  drawn as a fractal.
    //-----------------------------------------------------------------
    public void branch(int order, double x1, double y1, double length, double angle, Graphics2D g2)
@@ -44,11 +44,11 @@ public class TreePanel extends JPanel
       else
       {
          double x2, y2, x3, y3;
-         length *= LSCALE;
-         double angle1 = angle + ANGLE;
-         double angle2 = angle - ANGLE;
+         length *= LENGTH_SCALE;
+         double angle1 = angle - ANGLE_DIFF;
+         double angle2 = angle + ANGLE_DIFF;
          
-         x2 = x1 - (length * Math.sin(Math.toRadians(angle1)));
+         x2 = x1 + (length * Math.sin(Math.toRadians(angle1)));
          y2 = y1 - (length * Math.cos(Math.toRadians(angle1)));
          x3 = x1 + (length * Math.sin(Math.toRadians(angle2)));
          y3 = y1 - (length * Math.cos(Math.toRadians(angle2)));
@@ -73,10 +73,10 @@ public class TreePanel extends JPanel
 
       g2.setColor(Color.green);
       
-      Line2D.Double trunk = new Line2D.Double(200, 400, 200, 300);
+      Line2D.Double trunk = new Line2D.Double(400, 800, 400, 675);
       g2.draw(trunk);
 
-      this.branch(current, 200, 300, 100, 0, g2);
+      this.branch(current, 400, 675, 125, 0, g2);
    }
 
    //-----------------------------------------------------------------
