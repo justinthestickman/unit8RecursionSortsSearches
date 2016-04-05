@@ -37,5 +37,28 @@ public class ArrayUtil
       a[i] = a[j];
       a[j] = temp;
    }
+   
+   public static String[] randomStringArray(int length, int numChars)
+   {
+       String[] strings = new String[length];
+       for (int i = 0; i < length; i++)
+       {
+           String nextStr = ArrayUtil.randomString(numChars);
+           strings[i] = nextStr;
+       }
+       return strings;
+   }
+   
+   public static String randomString(int numChars)
+   {
+       Random r = new Random();
+       String alphabets = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+       String randStr = "";
+       for (int i = 0; i < numChars; i++)
+       {
+           char nextChar = alphabets.charAt(r.nextInt(52));
+           randStr += nextChar;
+       }
+       return randStr;
+   }
 }
-      

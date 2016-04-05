@@ -7,7 +7,7 @@ public class SelectionSorter
         for (int i = 0; i < a.length; i++)
         {
             int minPos = minimumPosition(a, i);
-            ArrayUtil.swap(a, minPos, 1);
+            ArrayUtil.swap(a, minPos, i);
         }
     }
     
@@ -18,7 +18,7 @@ public class SelectionSorter
         {
             if (a[i] < a[minPos])
             {
-                minPos = 1;
+                minPos = i;
             }
         }
         
