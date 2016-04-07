@@ -10,10 +10,7 @@ public class MergeSortDemo
    {  
       String[] a = ArrayUtil.randomStringArray(10, 10);
       System.out.println(Arrays.toString(a));
-
       MergeSorter.sort(a);
-
       System.out.println(Arrays.toString(a));
    }
 }
-

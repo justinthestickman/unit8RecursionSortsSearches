@@ -38,27 +38,43 @@ public class MergeSorter
       int iFirst = 0; // Next element to consider in the first array
       int iSecond = 0; // Next element to consider in the second array
       int j = 0; // Next open position in a
-      String alphabets = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+      String alphabet = "abcdefghijklmnopqrstuvwxyz";
       // As long as neither iFirst nor iSecond is past the end, move
       // the smaller element into a
       while (iFirst < first.length && iSecond < second.length)
-      {  
-         for (int i = 0; i < first.length; i++)
+      {
+         int i = 0;
+         int iBefore = 0;
+         while (iBefore == 0)
          {
-             
+            if (alphabet.indexOf(first[iFirst].toLowerCase().charAt(i)) < alphabet.indexOf(second[iSecond].toLowerCase().charAt(i)))
+            {  
+                iBefore = 1;
+            }
+            else if (alphabet.indexOf(second[iSecond].toLowerCase().charAt(i)) < alphabet.indexOf(first[iFirst].toLowerCase().charAt(i)))
+            {  
+                iBefore = 2;
+            }
+            i++;
          }
-         
-          if (first[iFirst] == second[iSecond])
-         {  
+         if (iBefore == 1)
+         {
             a[j] = first[iFirst];
             iFirst++;
+            j++;
          }
-         else
-         {  
+         else if (iBefore == 2)
+         {
             a[j] = second[iSecond];
             iSecond++;
+            j++;
          }
-         j++;
+         else
+         {
+            a[j] = first[iFirst];
+            a[j+1] = second[iSecond];
+            j+=2;
+         }
       }
 
       // Note that only one of the two loops below copies entries
